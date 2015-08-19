@@ -227,6 +227,11 @@ private_messages = (robot, users, message) ->
 # Returns nothing.
 private_message = (robot, user, message) ->
   user = get_pm_user user
+
+  # PM the user on IRC
+  if user?.room
+    delete user.room
+
   robot.send {user: user}, message
 
 # Delete the reply_to information from a given User,
